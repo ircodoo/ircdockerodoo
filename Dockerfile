@@ -234,6 +234,9 @@ ENV EXTRA_MODULES ${EXTRA_MODULES}
 
 ENTRYPOINT ["/entrypoint.sh"]
 
+ENV TZ=America/Toronto
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 ENV PGHOST ${DB_PORT_5432_TCP_ADDR}
 ENV PGPORT ${DB_PORT_5432_TCP_PORT}
 ENV PGUSER ${DB_ENV_POSTGRES_USER}
