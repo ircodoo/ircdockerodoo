@@ -56,7 +56,9 @@ smtp_user = ${SMTP_USER}
 test_enable = ${TEST_ENABLE}
 unaccent = ${UNACCENT}
 without_demo = ${WITHOUT_DEMO}
+db_isolation_level = ${DB_ISOLATION_LEVEL}
 workers = ${WORKERS}" > $ODOO_RC
+
     if [ -z "$EXTRA_ADDONS_PATHS" ]; then
         echo "The variable \$EXTRA_ADDONS_PATHS is empty, using default addons_path"
         echo "addons_path = ${ODOO_ADDONS_BASEPATH}" >> $ODOO_RC
