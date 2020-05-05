@@ -55,6 +55,9 @@ There's a bunch of configurations that can be changed in the .env file, allowing
 
 All compose files will raise a **postgres** container to be used by the **Odoo** container, depending on the version that has been set in the `.env` file for `$ODOO_VERSION`
 
+### Google Cloud Build
+gcloud builds submit --tag gcr.io/$PROJECT_ID/ircdockerodoo:$ODOO_VERSION ircdockerodoo/.
+
 ### Standalone Odoo
 
 This is the most straightforward option, as it will install **odoo** [source code](https://github.com/odoo/odoo) inside the *odoo container*, this gives flexibility to the image as it allows you to move it from host to host, and it's more stable-safe for a **production environment**
