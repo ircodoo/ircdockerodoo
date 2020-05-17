@@ -57,6 +57,7 @@ test_enable = ${TEST_ENABLE}
 unaccent = ${UNACCENT}
 without_demo = ${WITHOUT_DEMO}
 db_isolation_level = ${DB_ISOLATION_LEVEL}
+odoo_logging_json = ${ODOO_LOGGING_JSON}
 workers = ${WORKERS}" > $ODOO_RC
 
     if [ -z "$EXTRA_ADDONS_PATHS" ]; then
