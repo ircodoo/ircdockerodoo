@@ -97,6 +97,7 @@ RUN set -x; \
     tcl-dev \
     tk-dev \
     zlib1g-dev \
+    pyflame \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/* /tmp/*
 
@@ -121,7 +122,6 @@ RUN pip3 install --no-cache-dir --prefix=/usr/local https://nightly.odoo.com/${O
     inotify \
     python-json-logger \
     wdb \
-    pyflame \
     websocket-client \
     Werkzeug==0.15.6 \
     && (python3 -m compileall -q /usr/local || true) \
