@@ -121,6 +121,7 @@ RUN pip3 install --no-cache-dir --prefix=/usr/local https://nightly.odoo.com/${O
     inotify \
     python-json-logger \
     wdb \
+    pyflame \
     websocket-client \
     Werkzeug==0.15.6 \
     && (python3 -m compileall -q /usr/local || true) \
@@ -173,6 +174,7 @@ ENV \
     TEST_ENABLE=${TEST_ENABLE:-False} \
     UNACCENT=${UNACCENT:-False} \
     WITHOUT_DEMO=${WITHOUT_DEMO:-False} \
+    ODOO_LOGGING_JSON=${ODOO_LOGGING_JSON:-True} \
     WORKERS=${WORKERS:-0} \
     DB_ISOLATION_LEVEL=${DB_ISOLATION_LEVEL:-1}
 
