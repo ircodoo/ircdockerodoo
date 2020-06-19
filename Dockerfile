@@ -1,3 +1,16 @@
+FROM debian:buster as pyflame-build
+
+USER root
+# Build latest pyflame       //-- for live production profiling
+RUN apt-get -qq update && apt-get -qq install -y \
+       autoconf automake autotools-dev g++ pkg-config python-dev python3-dev libtool make \
+       git-core > /dev/null \
+    && git clone https://github.com/uber/pyflame.git \
+    && cd pyflame \
+    && ./autogen.sh > /dev/null \
+    && ./configure > /dev/null \
+    && make > /dev/null
+
 FROM python:3.7-slim-buster as base
 
 USER root
@@ -97,7 +110,6 @@ RUN set -x; \
     tcl-dev \
     tk-dev \
     zlib1g-dev \
-    pyflame \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/* /tmp/*
 
@@ -131,6 +143,10 @@ RUN pip3 install --no-cache-dir --prefix=/usr/local https://nightly.odoo.com/${O
 FROM base
 
 COPY --from=builder /usr/local /usr/local
+
+# Grab pyflame binary        //-- for live production profiling
+COPY --from=pyflame-build /pyflame/src/pyflame /usr/local/bin/
+RUN chmod +x /usr/local/bin/pyflame
 
 # PIP auto-install requirements.txt (change value to "1" to auto-install)
 ENV PIP_AUTO_INSTALL=${PIP_AUTO_INSTALL:-"0"}
