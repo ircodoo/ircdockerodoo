@@ -133,6 +133,7 @@ RUN pip3 install --no-cache-dir --prefix=/usr/local https://nightly.odoo.com/${O
     git-aggregator \
     inotify \
     python-json-logger \
+    py-spy \
     wdb \
     websocket-client \
     Werkzeug==0.15.6 \
