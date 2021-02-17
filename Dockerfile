@@ -28,6 +28,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install odoo deps
 RUN set -x; \
     apt-get -qq update && apt-get -qq install -y --no-install-recommends \
+    build-essential \
     ca-certificates \
     git-core \
     curl \
@@ -134,6 +135,7 @@ RUN pip3 install --no-cache-dir --prefix=/usr/local https://nightly.odoo.com/${O
     inotify \
     python-json-logger \
     py-spy \
+    redis \
     wdb \
     websocket-client \
     Werkzeug==0.15.6 \
