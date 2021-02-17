@@ -108,6 +108,7 @@ RUN set -x; \
     libtiff5-dev \
     libwebp-dev \
     lsb-release \
+    procps \
     tcl-dev \
     tk-dev \
     zlib1g-dev \
